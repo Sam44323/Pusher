@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createRef } from "react";
 import { Button, Input, ListGroup, ListGroupItem } from "reactstrap";
 import axios from "axios";
 import Pusher from "pusher-js";
@@ -10,23 +10,28 @@ function App() {
 
   const submitMessage = async () => {
     if (textMessage === "") return;
-    const response = await axios.post("/api/messages", {
-      message: textMessage,
-    });
-    console.log(response);
-    setTextMessage("");
+    try {
+      const response = await axios.post("/api/messages", {
+        message: textMessage,
+      });
+      console.log(response);
+      setTextMessage("");
+    } catch (err) {
+      console.error(err);
+      setTextMessage("");
+    }
   };
 
   useEffect(() => {
     Pusher.logToConsole = true;
 
-    var pusher = new Pusher("83b6c03d17b3a2afb50b", {
+    const pusher = new Pusher("83b6c03d17b3a2afb50b", {
       cluster: "ap2",
     });
 
-    var channel = pusher.subscribe("my-channel");
-    channel.bind("my-event", function (data: any) {
-      alert(JSON.stringify(data));
+    const channel = pusher.subscribe("chat");
+    channel.bind("message", function (data: any) {
+      setMessages((messages) => [...messages, data.message]);
     });
   }, []);
 
