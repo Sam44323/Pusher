@@ -3,9 +3,6 @@ package main
 //go:generate go run main.go
 
 import (
-	"fmt"
-	"os"
-
 	Pusher "github.com/Sam44323/go-pusher/pusher"
 	Utils "github.com/Sam44323/go-pusher/utils"
 	"github.com/gofiber/fiber/v2"
@@ -13,17 +10,30 @@ import (
 )
 
 func main() {
-	Utils.LoadEnv()
-	// initiating the pusher-client
-	Pusher.Init()
 
-	fmt.Printf("Starting server... %s", os.Getenv("DATA"))
-	app := fiber.New()
+	Utils.LoadEnv()         // loading the env's
+	pusher := Pusher.Init() // initiating the pusher-client
 
+	app := fiber.New() // initializing the fiber app
+
+	// utilising the cors middleware
 	app.Use(cors.New())
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("Hello, World!")
+	})
+
+	app.Post("/api/message", func(c *fiber.Ctx) error {
+		var message map[string]string
+		err := c.BodyParser(&message)
+		if err != nil {
+			return c.Status(500).SendString(err.Error())
+		}
+		pusher.Trigger("chat", "message", message)
+		return c.JSON(
+			fiber.Map{
+				"message": "Message sent",
+			})
 	})
 
 	app.Listen(":3000")
