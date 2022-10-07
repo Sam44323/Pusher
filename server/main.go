@@ -4,24 +4,19 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"os"
 
 	Pusher "github.com/Sam44323/go-pusher/pusher"
+	Utils "github.com/Sam44323/go-pusher/utils"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
-	"github.com/joho/godotenv"
 )
 
 func main() {
-	err := godotenv.Load(".env")
-
+	Utils.LoadEnv()
 	// initiating the pusher-client
 	Pusher.Init()
 
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
 	fmt.Printf("Starting server... %s", os.Getenv("DATA"))
 	app := fiber.New()
 
