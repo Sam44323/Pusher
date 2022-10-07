@@ -2,3 +2,5 @@
 .gpg
 node_modules
 .vscode
+.env.*
+.env
