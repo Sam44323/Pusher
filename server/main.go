@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 
+	demo "github.com/Sam44323/go-pusher/utils"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/joho/godotenv"
@@ -14,6 +15,8 @@ import (
 
 func main() {
 	err := godotenv.Load(".env")
+
+	demo.Runner()
 
 	if err != nil {
 		log.Fatal("Error loading .env file")
