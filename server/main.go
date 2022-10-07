@@ -3,6 +3,7 @@ package main
 //go:generate go run main.go
 
 import (
+	Handler "github.com/Sam44323/go-pusher/controller"
 	Pusher "github.com/Sam44323/go-pusher/pusher"
 	Utils "github.com/Sam44323/go-pusher/utils"
 	"github.com/gofiber/fiber/v2"
@@ -24,16 +25,7 @@ func main() {
 	})
 
 	app.Post("/api/message", func(c *fiber.Ctx) error {
-		var message map[string]string
-		err := c.BodyParser(&message)
-		if err != nil {
-			return c.Status(500).SendString(err.Error())
-		}
-		pusher.Trigger("chat", "message", message)
-		return c.JSON(
-			fiber.Map{
-				"message": "Message sent",
-			})
+		return Handler.MessageHandler(c, &pusher)
 	})
 
 	app.Listen(":3000")
