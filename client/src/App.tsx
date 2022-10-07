@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, Input, ListGroup, ListGroupItem } from "reactstrap";
 import axios from "axios";
+import Pusher from "pusher-js";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -15,6 +16,19 @@ function App() {
     console.log(response);
     setTextMessage("");
   };
+
+  useEffect(() => {
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher("83b6c03d17b3a2afb50b", {
+      cluster: "ap2",
+    });
+
+    var channel = pusher.subscribe("my-channel");
+    channel.bind("my-event", function (data: any) {
+      alert(JSON.stringify(data));
+    });
+  }, []);
 
   return (
     <div className="App">

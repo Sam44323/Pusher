@@ -302,10 +302,22 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.6.tgz#cee20bd55e68a1720bdab363ecf0c821ded4cd45"
   integrity sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==
 
+"@types/node@^14.14.31":
+  version "14.18.31"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.31.tgz#4b873dea3122e71af4f77e65ec5841397ff254d3"
+  integrity sha512-vQAnaReSQkEDa8uwAyQby8bYGKu84R/deEc6mg5T8fX6gzCn8QW6rziSgsti1fNvsrswKUKPnVTi7uoB+u62Mw==
+
 "@types/prop-types@*":
   version "15.7.5"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
+
+"@types/pusher-js@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@types/pusher-js/-/pusher-js-5.1.0.tgz#73d062489dd4e6981c2f2366da1bc2d4634783ba"
+  integrity sha512-VubdW1NvHAojLFtJ+FWmZsIlkSE+EiaLrrfCKcW/t9UDlXWF85rSPVc+5zdpZLVzkwaUaFeyIYSgeNfXc9Dxlg==
+  dependencies:
+    pusher-js "*"
 
 "@types/react-dom@^18.0.6":
   version "18.0.6"
@@ -737,6 +749,14 @@ proxy-from-env@^1.1.0:
   resolved "https://registry.yarnpkg.com/proxy-from-env/-/proxy-from-env-1.1.0.tgz#e102f16ca355424865755d2c9e8ea4f24d58c3e2"
   integrity sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==
 
+pusher-js@*, pusher-js@^7.4.0:
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/pusher-js/-/pusher-js-7.4.0.tgz#45205ecc159708af3021f41b15b07b390899124b"
+  integrity sha512-4ewETSlJEdRZ2eHGEMH3pHxMVB+sB4oMmOWbgYbSRsYbTFPOpRBumSEm9NSNse3pfjiluTrB98PaXijJ6BL3lg==
+  dependencies:
+    "@types/node" "^14.14.31"
+    tweetnacl "^1.0.3"
+
 react-dom@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.2.0.tgz#22aaf38708db2674ed9ada224ca4aa708d821e3d"
@@ -861,6 +881,11 @@ to-fast-properties@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
   integrity sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==
+
+tweetnacl@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-1.0.3.tgz#ac0af71680458d8a6378d0d0d050ab1407d35596"
+  integrity sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==
 
 typescript@^4.6.4:
   version "4.8.4"
