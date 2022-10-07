@@ -7,7 +7,7 @@ import (
 	"log"
 	"os"
 
-	demo "github.com/Sam44323/go-pusher/utils"
+	Pusher "github.com/Sam44323/go-pusher/pusher"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/joho/godotenv"
@@ -16,7 +16,8 @@ import (
 func main() {
 	err := godotenv.Load(".env")
 
-	demo.Runner()
+	// initiating the pusher-client
+	Pusher.Init()
 
 	if err != nil {
 		log.Fatal("Error loading .env file")
