@@ -11,7 +11,8 @@ function App() {
   const submitMessage = async () => {
     if (textMessage === "") return;
     try {
-      const response = await axios.post("/api/messages", {
+      const response = await axios.post("http://localhost:3000/api/message", {
+        username,
         message: textMessage,
       });
       console.log(response);
@@ -25,12 +26,13 @@ function App() {
   useEffect(() => {
     Pusher.logToConsole = true;
 
-    const pusher = new Pusher("83b6c03d17b3a2afb50b", {
-      cluster: "ap2",
+    const pusher = new Pusher(import.meta.env.VITE_PUSHER_APP_KEY!, {
+      cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER!,
     });
 
     const channel = pusher.subscribe("chat");
     channel.bind("message", function (data: any) {
+      console.log("Data: ", data);
       setMessages((messages) => [...messages, data.message]);
     });
   }, []);
