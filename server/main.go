@@ -12,7 +12,7 @@ import (
 
 func main() {
 
-	Utils.LoadEnv()         // loading the env's
+	Utils.LoadEnv()         // loading the env
 	pusher := Pusher.Init() // initiating the pusher-client
 
 	app := fiber.New() // initializing the fiber app
