@@ -3,6 +3,8 @@ import { Input, ListGroup, ListGroupItem } from "reactstrap";
 
 function App() {
   const [username, setUsername] = useState("");
+  const [messages, setMessages] = useState<string[]>([]);
+  const [textMessage, setTextMessage] = useState("");
 
   return (
     <div className="App">
@@ -27,12 +29,24 @@ function App() {
         />
       </div>
       <ListGroup>
-        <ListGroupItem>Cras justo odio</ListGroupItem>
-        <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-        <ListGroupItem>Morbi leo risus</ListGroupItem>
-        <ListGroupItem>Porta ac consectetur ac</ListGroupItem>
-        <ListGroupItem>Vestibulum at eros</ListGroupItem>
+        {messages.map((message, index) => (
+          <ListGroupItem key={index}>{message}</ListGroupItem>
+        ))}
       </ListGroup>
+      <div
+        style={{
+          maxWidth: "500px",
+          margin: "0 auto",
+        }}
+      >
+        <Input
+          type="textarea"
+          placeholder="Message"
+          value={textMessage}
+          onChange={(e) => setTextMessage(e.target.value)}
+          rows={4}
+        />
+      </div>
     </div>
   );
 }
